@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Data.Entity;
 namespace AirportTablo1.Controllers
 {
+    [AllowAnonymous]
     public class FlightsController : Controller
     {
         private ApplicationDbContext _context;
@@ -23,27 +24,55 @@ namespace AirportTablo1.Controllers
         {
             var flights = _context.Flights.Include(l => l.Status).Include(c => c.Terminal).ToList();
             List<Flight> arriveFlight = new List<Flight>();
-            if (id == 0)
-                return View(flights);
-            foreach (var item in flights)
+            if (User.IsInRole("Administrator"))
             {
-                if (id == 1)
+                if (id == 0)
+                    return View("List", flights);
+                foreach (var item in flights)
                 {
-                    if (item.IsArrive)
+                    if (id == 1)
                     {
-                        arriveFlight.Add(item);
+                        if (item.IsArrive)
+                        {
+                            arriveFlight.Add(item);
+                        }
                     }
-                }
-                if (id == 2)
-                {
-                    if (!item.IsArrive)
+                    if (id == 2)
                     {
-                        arriveFlight.Add(item);
+                        if (!item.IsArrive)
+                        {
+                            arriveFlight.Add(item);
+                        }
                     }
-                }
 
+                }
+                return View("List", arriveFlight);
             }
-            return View(arriveFlight);
+            else
+            {
+                if (id == 0)
+                    return View("ReadOnlyList", flights);
+                foreach (var item in flights)
+                {
+                    if (id == 1)
+                    {
+                        if (item.IsArrive)
+                        {
+                            arriveFlight.Add(item);
+                        }
+                    }
+                    if (id == 2)
+                    {
+                        if (!item.IsArrive)
+                        {
+                            arriveFlight.Add(item);
+                        }
+                    }
+
+                }
+                return View("ReadOnlyList", arriveFlight);
+            }
+            
         }
         public ActionResult Details(int id=0)
         {
@@ -79,6 +108,13 @@ namespace AirportTablo1.Controllers
 
             _context.SaveChanges();
             return RedirectToAction("Index", "Flights");
+        }
+
+        [Authorize]
+        [HttpGet]
+        public new ActionResult Profile()
+        {
+            return View(); 
         }
     }
 }

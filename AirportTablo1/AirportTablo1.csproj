@@ -204,6 +204,10 @@
     <Compile Include="Migrations\201712091754172_Add data.Designer.cs">
       <DependentUpon>201712091754172_Add data.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712092239457_Add user-role.cs" />
+    <Compile Include="Migrations\201712092239457_Add user-role.Designer.cs">
+      <DependentUpon>201712092239457_Add user-role.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Flight.cs" />
@@ -273,8 +277,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Flights\Index.cshtml" />
+    <Content Include="Views\Flights\List.cshtml" />
     <Content Include="Views\Flights\Edit.cshtml" />
+    <Content Include="Views\Flights\Profile.cshtml" />
+    <Content Include="Views\Flights\ReadOnlyList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -298,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712091754172_Add data.resx">
       <DependentUpon>201712091754172_Add data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712092239457_Add user-role.resx">
+      <DependentUpon>201712092239457_Add user-role.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
