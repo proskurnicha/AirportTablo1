@@ -20,6 +20,9 @@ namespace AirportTablo1.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Flight> Flights { get; set; }
+        public DbSet<Terminal> Terminals { get; set; }
+        public DbSet<Status> Statuses { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

@@ -24,7 +24,7 @@ namespace AirportTablo1
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-pusle.css",
                       "~/Content/site.css"));
         }
     }
