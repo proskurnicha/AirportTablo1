@@ -1,0 +1,20 @@
+﻿@model AirportTablo1.Models.FormFlightViewModel 
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit flight</h2>
+@using(Html.BeginForm("Save", "Flights"))
+{
+<div class="form-group">
+    @Html.LabelFor(m => m.Flight.Terminal.TerminalInfo)
+    @Html.DropDownListFor(m => m.Flight.TerminalId, new SelectList(Model.Terminal, "Id", "TerminalInfo"), "", new { @class = "form-control" })
+    @Html.LabelFor(m => m.Flight.Status.StatusInfo)
+    @Html.DropDownListFor(m => m.Flight.StatusId, new SelectList(Model.Status, "Id", "StatusInfo"), "Виберіть статус", new { @class = "form-control" })
+    @Html.LabelFor(m => m.Flight.DateTimeDelay)
+    @Html.TextBoxFor(m => m.Flight.DateTimeDelay, "{0:HH mm}", new { @class = "form-control" })
+</div>
+ @Html.HiddenFor(m => m.Flight.Id)
+<button type="submit" class="btn btn-primary">Сохранить</button>
+}

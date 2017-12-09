@@ -9,6 +9,7 @@ namespace AirportTablo1.Models
     {
         public int Id { get; set; }
         [Required]
+        [Display(Name ="Терминал")]
         public string TerminalInfo { get; set; }
     }
 }

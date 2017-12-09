@@ -17,13 +17,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Всі польоти", "Index", "Flights", new { id = 0 }, null)</li>
+                    <li>@Html.ActionLink("Прилітають", "Index", "Flights", new { id = 1 }, null)</li>
+                    <li>@Html.ActionLink("Відлітають", "Index", "Flights", new { id = 2 }, null)</li>
+                    <li>@Html.ActionLink("Мій кабінет", "Index", "Profiles")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -33,7 +34,10 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Airoport tablo</p>
+            <asp:Timer ID="Timer1" runat="server" ontick="Timer1_Tick" Interval="1000">
+            </asp:Timer>
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         </footer>
     </div>
 

@@ -23,23 +23,62 @@ namespace AirportTablo1.Controllers
         {
             var flights = _context.Flights.Include(l => l.Status).Include(c => c.Terminal).ToList();
             List<Flight> arriveFlight = new List<Flight>();
+            if (id == 0)
+                return View(flights);
             foreach (var item in flights)
             {
-
-                if (item.IsArrive)
+                if (id == 1)
                 {
-                    arriveFlight.Add(item);
+                    if (item.IsArrive)
+                    {
+                        arriveFlight.Add(item);
+                    }
                 }
+                if (id == 2)
+                {
+                    if (!item.IsArrive)
+                    {
+                        arriveFlight.Add(item);
+                    }
+                }
+
             }
             return View(arriveFlight);
         }
-        public ActionResult Details(int id)
+        public ActionResult Details(int id=0)
         {
             var flights = _context.Flights.SingleOrDefault(l => l.Id == id);
             if (flights == null)
                 return HttpNotFound();
 
             return View(flights);
+        }
+        public ActionResult Edit(int id)
+        {
+            var flight = _context.Flights.SingleOrDefault(m => m.Id == id);
+            if (flight == null)
+                return HttpNotFound();
+            var status = _context.Statuses.ToList();
+            var terminals = _context.Terminals.ToList();
+            var viewModel = new FormFlightViewModel()
+            {
+                Status = status,
+                Terminal = terminals,
+                Flight = flight
+            };
+            return View("Edit", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Flight flight)
+        {
+            var flightInDb = _context.Flights.Single(m => m.Id == flight.Id);
+            flightInDb.DateTimeDelay = flight.DateTimeDelay;
+            flightInDb.StatusId = flight.StatusId;
+            flightInDb.TerminalId = flight.TerminalId;
+
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Flights");
         }
     }
 }

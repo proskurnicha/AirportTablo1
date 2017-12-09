@@ -22,6 +22,7 @@ namespace AirportTablo1.Models
         public string CityDepartment { get; set; }
         [Required]
         public string NameAirline { get; set; }
+        [Display(Name = "Время задержки/прибытия заранее")]
         public DateTime DateTimeDelay { get; set; }
 
     }
