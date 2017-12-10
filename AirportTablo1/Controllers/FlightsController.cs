@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using System.Data.Entity;
 namespace AirportTablo1.Controllers
 {
-    [AllowAnonymous]
+//    [AllowAnonymous]
     public class FlightsController : Controller
     {
         private ApplicationDbContext _context;
