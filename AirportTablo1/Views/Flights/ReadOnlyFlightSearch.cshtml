@@ -1,0 +1,38 @@
+﻿
+@model IEnumerable<AirportTablo1.Models.Flight>
+
+<div id="searchresults">
+
+    @if (!Model.Any())
+    {
+        <p> Пока что полётов нет!</p>
+    }
+    else
+    {
+        <p>Знайдені рейси: </p>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Код</th>
+                    <th>Маршрут</th>
+                    <th>Термінал</th>
+                    <th>Статус</th>
+                    <th>Час</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var flight in Model)
+                {
+                    <tr>
+                        <td>@Html.ActionLink(flight.CodeFligth, "Details", "Flighs", new { id = flight.Id }, null)</td>
+                        <td>@flight.CityDepartment-@flight.CityArrive</td>
+                        <td>@flight.Terminal.TerminalInfo</td>
+                        <td>@flight.Status.StatusInfo</td>
+                        <td>@flight.DateTimeAiplaneMove.ToShortTimeString()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    <p>Інші:</p>
+</div>

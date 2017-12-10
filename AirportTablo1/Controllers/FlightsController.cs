@@ -19,6 +19,7 @@ namespace AirportTablo1.Controllers
         {
             _context.Dispose();
         }
+        //List<Flight> arriveFlight;
         // GET: Flights
         public ActionResult Index(int id)
         {
@@ -27,7 +28,7 @@ namespace AirportTablo1.Controllers
             if (User.IsInRole("Administrator"))
             {
                 if (id == 0)
-                    return View("List", flights);
+                    return View("ListBefore", flights);
                 foreach (var item in flights)
                 {
                     if (id == 1)
@@ -46,12 +47,12 @@ namespace AirportTablo1.Controllers
                     }
 
                 }
-                return View("List", arriveFlight);
+                return View("ListBefore", arriveFlight);
             }
             else
             {
                 if (id == 0)
-                    return View("ReadOnlyList", flights);
+                    return View("ReadOnlyListBefore", flights);
                 foreach (var item in flights)
                 {
                     if (id == 1)
@@ -70,11 +71,40 @@ namespace AirportTablo1.Controllers
                     }
 
                 }
-                return View("ReadOnlyList", arriveFlight);
+                return View("ReadOnlyListBefore", arriveFlight);
             }
             
         }
-        public ActionResult Details(int id=0)
+
+        [HttpPost]
+        public ActionResult FlightSearch(string code)
+        {
+            if(code == "")
+            {
+                return Content("");
+            }
+            var allFlightCode = _context.Flights.Include(m => m.Status).Include(l => l.Terminal).Where(a => a.CodeFligth.Contains(code)).ToList();
+            var allFlightArrive = _context.Flights.Include(m => m.Status).Include(l => l.Terminal).Where(a => a.CityArrive.Contains(code)).ToList();
+            var allFlightDeparture = _context.Flights.Include(m => m.Status).Include(l => l.Terminal).Where(a => a.CityDepartment.Contains(code)).ToList();
+            List<Flight> allFlight = allFlightCode;
+            allFlight.AddRange(allFlightArrive);
+            allFlight.AddRange(allFlightDeparture);
+            if (allFlight.Count <= 0)
+            {
+                return HttpNotFound();
+            }
+            if (User.IsInRole("Administrator"))
+            {
+                return PartialView("FlightSearch", allFlight);
+            }
+            else
+            {
+                return PartialView("ReadOnlyFlightSearch", allFlight);
+            }
+        }
+//        @Scripts.Render("~/scripts/jquery-1.10.2.js")
+//@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.js")
+        public ActionResult Details(int id)
         {
             var flights = _context.Flights.SingleOrDefault(l => l.Id == id);
             if (flights == null)
