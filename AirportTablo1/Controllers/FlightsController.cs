@@ -144,8 +144,7 @@ namespace AirportTablo1.Controllers
         [HttpGet]
         public new ActionResult Profile()
         {
-            return View("YEEEEEEEEEEEEEEEEEEEEEEEEEEEEES");
-            //return Content("YEEEEEEEEEEEEEEEEEEEEEEEEEEEEES"); 
+            return View();
         }
     }
 }
