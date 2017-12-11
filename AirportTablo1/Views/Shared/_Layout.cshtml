@@ -25,7 +25,8 @@
                     <li>@Html.ActionLink("Прилітають", "Index", "Flights", new { id = 1 }, null)</li>
                     <li>@Html.ActionLink("Відлітають", "Index", "Flights", new { id = 2 }, null)</li>
                     @*<li><a href="#">Messages <span class="badge">3</span></a></li>*@
-                    <li>@Html.ActionLink("Мій кабінет span class=\"badge\">3</span>", "Profile", "Flights")</li>
+                    <li>@Html.ActionLink("Мій кабінет", "Profile", "Flights")</li>
+                    @*span class=\"badge\">3</span>*@
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

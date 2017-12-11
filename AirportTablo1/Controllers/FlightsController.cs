@@ -106,7 +106,7 @@ namespace AirportTablo1.Controllers
 //@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.js")
         public ActionResult Details(int id)
         {
-            var flights = _context.Flights.SingleOrDefault(l => l.Id == id);
+            var flights = _context.Flights.Include(m => m.Status).Include(l => l.Terminal).SingleOrDefault(l => l.Id == id);
             if (flights == null)
                 return HttpNotFound();
 
@@ -144,7 +144,8 @@ namespace AirportTablo1.Controllers
         [HttpGet]
         public new ActionResult Profile()
         {
-            return View(); 
+            return View("YEEEEEEEEEEEEEEEEEEEEEEEEEEEEES");
+            //return Content("YEEEEEEEEEEEEEEEEEEEEEEEEEEEEES"); 
         }
     }
 }

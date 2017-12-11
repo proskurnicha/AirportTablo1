@@ -6,16 +6,16 @@
 
 
 <div>
-    <br/>
+    <br />
     @using (Ajax.BeginForm("FlightSearch", new AjaxOptions { UpdateTargetId = "results" }))
     {
         <div class="row">
             <div class="col-lg-6">
                 <div class="input-group">
                     <span class="input-group-btn">
-                        <button class="btn btn-secondary" type="button">Go!</button>
+                        <button class="btn btn-secondary" type="button">Вперед</button>
                     </span>
-                    <input type="text" name="code" class="form-control" placeholder="Search for..." aria-label="Search for...">
+                    <input type="text" name="code" class="form-control" placeholder="Пошук..." aria-label="Пошук...">
                 </div>
             </div>
         </div>
@@ -23,10 +23,11 @@
             <input type="submit" value="Поиск" />*@
     }
     <div id="results"></div>
+    <br />
 </div>
 @Scripts.Render("~/scripts/jquery-1.10.2.min.js")
 @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
-<br/>
+
 @if (!Model.Any())
 {
     <p> Пока что полётов нет!</p>
@@ -41,19 +42,19 @@ else
                 <th>Термінал</th>
                 <th>Статус</th>
                 <th>Час</th>
-                <th>Редактировать</th>
+                <th>Редагувати</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var flight in Model)
             {
                 <tr>
-                    <td>@Html.ActionLink(flight.CodeFligth, "Details", "Flighs", new { id = flight.Id }, null)</td>
+                    <td>@Html.ActionLink(flight.CodeFligth, "Details", "Flights", new { id = flight.Id }, null)</td>
                     <td>@flight.CityDepartment-@flight.CityArrive</td>
                     <td>@flight.Terminal.TerminalInfo</td>
                     <td>@flight.Status.StatusInfo</td>
                     <td>@flight.DateTimeAiplaneMove.ToShortTimeString()</td>
-                    <td>@Html.ActionLink("Редактировать", "Edit", "Flights", new { id = flight.Id }, null)</td>
+                    <td>@Html.ActionLink("Редагувати", "Edit", "Flights", new { id = flight.Id }, null)</td>
 
                 </tr>
             }

@@ -1,0 +1,25 @@
+﻿@model AirportTablo1.Models.Flight
+@{
+    /**/
+
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Детальна інформація</h2>
+<p>Код рейсу: @Model.CodeFligth</p>
+<p>Маршрут: @Model.CityDepartment - @Model.CityArrive</p>
+@if (Model.IsArrive)
+{
+    <p>Час прибуття: @Model.DateTimeAiplaneMove.ToShortTimeString()</p>
+}
+@if (!Model.IsArrive)
+{
+    <p>Час відправлення: @Model.DateTimeAiplaneMove.ToShortTimeString()</p>
+}
+<p>Час затримки: @Model.DateTimeDelay.ToShortTimeString()</p>
+<p>Статус: @Model.Status.StatusInfo</p>
+<p>Номер терміналу: @Model.Terminal.TerminalInfo</p>
+<p>Ім`я авіакомпанії: @Model.NameAirline</p>
+
+

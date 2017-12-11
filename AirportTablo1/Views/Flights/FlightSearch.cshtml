@@ -8,6 +8,7 @@
     }
     else
     {
+        <br/>
         <p>Знайдені рейси: </p>
         <table class="table table-bordered table-hover">
             <thead>
@@ -17,19 +18,19 @@
                     <th>Термінал</th>
                     <th>Статус</th>
                     <th>Час</th>
-                    <th>Редактировать</th>
+                    <th>Редагувати</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var flight in Model)
                 {
                     <tr>
-                        <td>@Html.ActionLink(flight.CodeFligth, "Details", "Flighs", new { id = flight.Id }, null)</td>
+                        <td>@Html.ActionLink(flight.CodeFligth, "Details", "Flights", new { id = flight.Id }, null)</td>
                         <td>@flight.CityDepartment-@flight.CityArrive</td>
                         <td>@flight.Terminal.TerminalInfo</td>
                         <td>@flight.Status.StatusInfo</td>
                         <td>@flight.DateTimeAiplaneMove.ToShortTimeString()</td>
-                        <td>@Html.ActionLink("Редактировать", "Edit", "Flights", new { id = flight.Id }, null)</td>
+                        <td>@Html.ActionLink("Редагувати", "Edit", "Flights", new { id = flight.Id }, null)</td>
                     </tr>
                 }
             </tbody>

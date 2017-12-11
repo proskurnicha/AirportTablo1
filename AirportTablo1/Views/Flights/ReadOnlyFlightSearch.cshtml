@@ -9,6 +9,7 @@
     }
     else
     {
+        <br/>
         <p>Знайдені рейси: </p>
         <table class="table table-bordered table-hover">
             <thead>
@@ -24,7 +25,7 @@
                 @foreach (var flight in Model)
                 {
                     <tr>
-                        <td>@Html.ActionLink(flight.CodeFligth, "Details", "Flighs", new { id = flight.Id }, null)</td>
+                        <td>@Html.ActionLink(flight.CodeFligth, "Details", "Flights", new { id = flight.Id }, null)</td>
                         <td>@flight.CityDepartment-@flight.CityArrive</td>
                         <td>@flight.Terminal.TerminalInfo</td>
                         <td>@flight.Status.StatusInfo</td>
