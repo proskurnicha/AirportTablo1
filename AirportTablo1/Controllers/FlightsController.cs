@@ -114,7 +114,7 @@ namespace AirportTablo1.Controllers
         }
         public ActionResult Edit(int id)
         {
-            var flight = _context.Flights.SingleOrDefault(m => m.Id == id);
+            var flight = _context.Flights.Include(l => l.Status).Include(l =>l.Terminal).SingleOrDefault(m => m.Id == id);
             if (flight == null)
                 return HttpNotFound();
             var status = _context.Statuses.ToList();
