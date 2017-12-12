@@ -13,7 +13,7 @@
     @Html.LabelFor(m => m.Flight.Status.StatusInfo)
     @Html.DropDownListFor(m => m.Flight.StatusId, new SelectList(Model.Status, "Id", "StatusInfo"), @Model.Flight.Status.StatusInfo, new { @class = "form-control" })
     @Html.LabelFor(m => m.Flight.DateTimeDelay)
-    @Html.TextBoxFor(m => m.Flight.DateTimeDelay, "{0:HH mm}", new { @class = "form-control" })
+    @Html.TextBoxFor(m => m.Flight.DateTimeDelay, "{0:HH:mm:ss}", new { @class = "form-control" })
 </div>
  @Html.HiddenFor(m => m.Flight.Id)
 <button type="submit" class="btn btn-primary">Сохранить</button>

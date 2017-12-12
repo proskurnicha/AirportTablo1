@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using System.Data.Entity;
 namespace AirportTablo1.Controllers
 {
-//    [AllowAnonymous]
+    //    [AllowAnonymous]
     public class FlightsController : Controller
     {
         private ApplicationDbContext _context;
@@ -73,13 +73,13 @@ namespace AirportTablo1.Controllers
                 }
                 return View("ReadOnlyListBefore", arriveFlight);
             }
-            
+
         }
 
         [HttpPost]
         public ActionResult FlightSearch(string code)
         {
-            if(code == "")
+            if (code == "")
             {
                 return Content("");
             }
@@ -102,8 +102,8 @@ namespace AirportTablo1.Controllers
                 return PartialView("ReadOnlyFlightSearch", allFlight);
             }
         }
-//        @Scripts.Render("~/scripts/jquery-1.10.2.js")
-//@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.js")
+        //        @Scripts.Render("~/scripts/jquery-1.10.2.js")
+        //@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.js")
         public ActionResult Details(int id)
         {
             var flights = _context.Flights.Include(m => m.Status).Include(l => l.Terminal).SingleOrDefault(l => l.Id == id);
@@ -114,7 +114,7 @@ namespace AirportTablo1.Controllers
         }
         public ActionResult Edit(int id)
         {
-            var flight = _context.Flights.Include(l => l.Status).Include(l =>l.Terminal).SingleOrDefault(m => m.Id == id);
+            var flight = _context.Flights.Include(l => l.Status).Include(l => l.Terminal).SingleOrDefault(m => m.Id == id);
             if (flight == null)
                 return HttpNotFound();
             var status = _context.Statuses.ToList();
@@ -133,8 +133,10 @@ namespace AirportTablo1.Controllers
         {
             var flightInDb = _context.Flights.Single(m => m.Id == flight.Id);
             flightInDb.DateTimeDelay = flight.DateTimeDelay;
-            flightInDb.StatusId = flight.StatusId;
-            flightInDb.TerminalId = flight.TerminalId;
+            if (flight.StatusId != 0)
+                flightInDb.StatusId = flight.StatusId;
+            if (flight.TerminalId != 0)
+                flightInDb.TerminalId = flight.TerminalId;
 
             _context.SaveChanges();
             return RedirectToAction("Index", "Flights");
@@ -146,5 +148,10 @@ namespace AirportTablo1.Controllers
         {
             return View();
         }
+        
+        //public  ActionResult Profile(string )
+        //{
+        //    return View();
+        //}
     }
 }
