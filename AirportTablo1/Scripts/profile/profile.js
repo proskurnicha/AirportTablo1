@@ -11,7 +11,7 @@ $(document).ready(function () {
             if (message.noFlight) {
                 return;
             }
-
+            //message = { "fcs": "Natalia Milova", "terminal": "A", "flightNumber": "PJG", "timeBeforeFlight": 2, "noFlight": false }
             localStorage.setItem("terminal", message.terminal);
 
             if (message.timeBeforeFlight - 15 > 0) {
@@ -42,13 +42,13 @@ $(document).ready(function () {
             //});
     });
 
-    setInterval(function () { chechChangesFly(); }, 1000);
+    setInterval(function () { chechChangesFly(); }, 100000);
 
     function chechChangesFly() {
         const terminal = localStorage.getItem("terminal");
         $.ajax({
             type: 'get',
-            url: `/api/check/${userID}/A`,
+            url: `/api/check/${userID}/${terminal}`,
             datatype: "json",
             success: function (data) {
                 console.log(data);
@@ -80,12 +80,6 @@ $(document).ready(function () {
                     <strong>Шановний ${alertData.fcs}</strong> реєстрація на рейс № ${alertData.flightNumber} ${wait}.
                     <p>Термінал: №  ${alertData.terminal}. Приємного польоту.</p>
                     <span class="text-danger">Відправлено в ${timeCreatingPanel.getHours()}:${timeCreatingPanel.getMinutes()}</span >
-                </div>`
-        return `<div class="alert alert-info alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <strong>Шановний ${alertData.fcs}</strong> реєстрація на рейс № ${alertData.flightNumber} ${wait}.
-                    <p>Термінал: №  ${alertData.terminal}. Приємного польоту.</p>
-                    <span class="text-danger">Відправлено в ${timeCreating.getHours()}:${timeCreating.getMinutes()}</span >
                 </div>`
     }
 
