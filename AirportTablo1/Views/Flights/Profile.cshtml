@@ -4,18 +4,38 @@
     ViewBag.Title = "Profile";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>Profile</h2>
-@section Scripts {
-    window.setInterval(function() {
-    // Send an AJAX request every 5s to poll for changes and update the UI
-    // example with jquery:
-    $.get('/foo', function(result) {
-    // TODO: use the results returned from your controller action
-    // to update the UI
-    });
+
+<div class="alert_list">
+    <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Warning!</strong> Better check yourself, you're not looking too good.
+    </div>
+    <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Warning!</strong> Better check yourself, you're not looking too good.
+    </div>
+    <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Warning!</strong> Better check yourself, you're not looking too good.
+    </div>
+</div>
+@*<script type="text/javascript">
+    window.setInterval(function () {
+        // Send an AJAX request every 5s to poll for changes and update the UI
+        // example with jquery:
+        $.get('Profile', function (result) {
+            // TODO: use the results returned from your controller action
+            // to update the UI
+            <p>result</p>
+        });
     }, 5000);
-}
+</script>*@
 <script type="text/javascript">
-    var a = "@User.Identity.GetUserId().ToString()";
+    const userID = "@User.Identity.GetUserId().ToString()";
 </script>
+@Scripts.Render("~/scripts/jquery-1.10.2.min.js")
+@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
+@Scripts.Render("~/scripts/bootstrap.js")
+@Scripts.Render("~/scripts/profile/profile.js")
+
