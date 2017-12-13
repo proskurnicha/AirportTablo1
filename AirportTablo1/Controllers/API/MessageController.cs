@@ -21,7 +21,16 @@ namespace AirportTablo1.Controllers.API
         public ForMessageViewModel Get(string id)
         {
             ForMessageViewModel forMessageViewModel = new ForMessageViewModel();
-            var passanger = _context.Passangers.FirstOrDefault(m => m.AspNetUsersId == id);
+            var user = _context.Users.FirstOrDefault(m => m.Id == id);
+            if (user == null)
+            {
+                return new ForMessageViewModel();
+            }
+            var passanger = _context.Passangers.FirstOrDefault(m => m.AspNetUsersId == user.Id);
+            if (passanger == null)
+            {
+                return new ForMessageViewModel();
+            }
             forMessageViewModel.fcs = passanger.FirstName + " " + passanger.SecondName;
             var flight = _context.Flights.FirstOrDefault(m => m.Id == passanger.FlightId);
             forMessageViewModel.flightNumber = flight.CodeFligth;
@@ -32,7 +41,7 @@ namespace AirportTablo1.Controllers.API
             TimeSpan timeSpan = flight.DateTimeAiplaneMove - DateTime.Now;
             forMessageViewModel.timeBeforeFlight = Convert.ToInt32(timeSpan.Days * 24 * 60 + timeSpan.Hours * 60 + timeSpan.Minutes);
             //forMessageViewModel.timeBeforeFlight = date;
-
+            forMessageViewModel.noFlight = false;
             return forMessageViewModel;
         }
 
