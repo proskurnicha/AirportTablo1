@@ -6,7 +6,7 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 namespace AirportTablo1.Models
 {
-    [Table("dbo.StatisticNameAirlineCount")]
+    [Table("dbo.StatisticNameAirline")]
     public class StatisticAirline
     {
         public int CountAirline;
