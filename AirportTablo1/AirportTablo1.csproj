@@ -200,6 +200,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\API\CheckController.cs" />
     <Compile Include="Controllers\API\MessageController.cs" />
     <Compile Include="Controllers\FlightsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -224,8 +225,13 @@
     <Compile Include="Migrations\201712121444189_add passangers.Designer.cs">
       <DependentUpon>201712121444189_add passangers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712131513030_Add TimeDalay.cs" />
+    <Compile Include="Migrations\201712131513030_Add TimeDalay.Designer.cs">
+      <DependentUpon>201712131513030_Add TimeDalay.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CheckViewModels.cs" />
     <Compile Include="Models\Flight.cs" />
     <Compile Include="Models\ForMessageViewModel.cs" />
     <Compile Include="Models\FormFlightViewModel.cs" />
@@ -338,6 +344,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712121444189_add passangers.resx">
       <DependentUpon>201712121444189_add passangers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712131513030_Add TimeDalay.resx">
+      <DependentUpon>201712131513030_Add TimeDalay.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
