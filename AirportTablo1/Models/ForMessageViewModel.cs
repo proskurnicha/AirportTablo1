@@ -11,5 +11,14 @@ namespace AirportTablo1.Models
         public string terminal;
         public string flightNumber;
         public int timeBeforeFlight;
+        public bool noFlight;
+        public ForMessageViewModel()
+        {
+            fcs = "";
+            terminal = "";
+            flightNumber = "";
+            timeBeforeFlight = 0;
+            noFlight = true;
+        }
     }
 }
