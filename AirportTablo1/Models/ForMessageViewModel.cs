@@ -10,8 +10,6 @@ namespace AirportTablo1.Models
         public string fcs;
         public string terminal;
         public string flightNumber;
-        public TimeSpan timeBeforeFlight;
-        public bool type;
-
+        public int timeBeforeFlight;
     }
 }

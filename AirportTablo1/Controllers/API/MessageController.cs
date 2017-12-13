@@ -28,14 +28,13 @@ namespace AirportTablo1.Controllers.API
             var terminal = _context.Terminals.FirstOrDefault(m => m.Id == flight.TerminalId);
             forMessageViewModel.terminal = terminal.TerminalInfo;
 
-            TimeSpan timeSpan = DateTime.Now - flight.DateTimeAiplaneMove;
-            //TimeSpan timeSpan2 = timeSpan - passanger.Flight.DateTimeDelay;
-            forMessageViewModel.timeBeforeFlight = timeSpan;
-            forMessageViewModel.type = true;
-
+            //string date = dateMove.Minute + " " + dateMove.Second;
+            TimeSpan timeSpan = flight.DateTimeAiplaneMove - DateTime.Now;
+            forMessageViewModel.timeBeforeFlight = Convert.ToInt32(timeSpan.Days * 24 * 60 + timeSpan.Hours * 60 + timeSpan.Minutes);
+            //forMessageViewModel.timeBeforeFlight = date;
 
             return forMessageViewModel;
         }
-        
+
     }
 }
