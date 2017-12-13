@@ -16,6 +16,12 @@ namespace AirportTablo1
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute(
+               name: "MyNewApi",
+               routeTemplate: "api/{controller}/{id}/{terminal}",
+               defaults: new { id = RouteParameter.Optional }
+           );
         }
     }
 }

@@ -10,5 +10,11 @@ namespace AirportTablo1.Models
         public int delay;
         public bool changeTerminal;
         public string terminal;
+        public CheckViewModels()
+        {
+            delay = 0;
+            changeTerminal = false;
+            terminal = "";
+        }
     }
 }

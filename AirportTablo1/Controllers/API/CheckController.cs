@@ -22,10 +22,22 @@ namespace AirportTablo1.Controllers.API
         public CheckViewModels Get(string id, string terminal)
         {
             CheckViewModels checkViewModels = new CheckViewModels();
-            var passanger = _context.Passangers.FirstOrDefault(m => m.AspNetUsersId == id);
+
+            var user = _context.Users.FirstOrDefault(m => m.Id == id);
+            if (user == null)
+            {
+                return  new CheckViewModels();
+            }
+            var passanger = _context.Passangers.FirstOrDefault(m => m.AspNetUsersId == user.Id);
+            if (passanger == null)
+            {
+                return new CheckViewModels();
+            }
+            
             var flight = _context.Flights.FirstOrDefault(m => m.Id == passanger.FlightId);
-            //   var terminalDb = _context.Terminals.FirstOrDefault(m => m.TerminalInfo == terminal);
-            if (flight.Terminal.TerminalInfo == terminal)
+
+            var terminalDB = _context.Terminals.FirstOrDefault(m => m.Id == flight.TerminalId);
+            if (terminalDB.TerminalInfo == terminal)
             {
                 checkViewModels.changeTerminal = false;
             }
@@ -34,15 +46,10 @@ namespace AirportTablo1.Controllers.API
                 checkViewModels.changeTerminal = true;
                 checkViewModels.terminal = flight.Terminal.TerminalInfo;
             }
-            //forMessageViewModel.flightNumber = flight.CodeFligth;
-            //var terminal = _context.Terminals.FirstOrDefault(m => m.Id == flight.TerminalId);
-            //forMessageViewModel.terminal = terminal.TerminalInfo;
-
-            ////string date = dateMove.Minute + " " + dateMove.Second;
-            //TimeSpan timeSpan = flight.DateTimeAiplaneMove - DateTime.Now;
-            //forMessageViewModel.timeBeforeFlight = Convert.ToInt32(timeSpan.Days * 24 * 60 + timeSpan.Hours * 60 + timeSpan.Minutes);
-            ////forMessageViewModel.timeBeforeFlight = date;
-
+            int hours = Convert.ToInt32(flight.TimeDelay.TotalHours)*60;
+            int minutes = Convert.ToInt32(flight.TimeDelay.TotalMinutes);
+            checkViewModels.delay = hours + minutes;
+               
             return checkViewModels;
         }
     }
