@@ -200,7 +200,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\API\APIFlightsController.cs" />
     <Compile Include="Controllers\API\MessageController.cs" />
     <Compile Include="Controllers\FlightsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -233,6 +232,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Passangers.cs" />
+    <Compile Include="Models\Statistic.cs" />
     <Compile Include="Models\Status.cs" />
     <Compile Include="Models\Terminal.cs" />
     <Compile Include="Modules\TimerModule.cs" />
@@ -306,6 +306,7 @@
     <Content Include="Views\Flights\ReadOnlyFlightSearch.cshtml" />
     <Content Include="Views\Flights\ListBefore.cshtml" />
     <Content Include="Views\Flights\Details.cshtml" />
+    <Content Include="Views\Flights\Statistic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

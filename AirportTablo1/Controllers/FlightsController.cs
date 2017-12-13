@@ -148,7 +148,14 @@ namespace AirportTablo1.Controllers
         {
             return View();
         }
-        
+
+        //public ActionResult Statistic()
+        //{
+        //    var statistic = _context.StatisticAirlines;
+
+        //    return View(statistic);
+        //}
+
         //public  ActionResult Profile(string )
         //{
         //    return View();
