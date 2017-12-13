@@ -23,6 +23,8 @@ namespace AirportTablo1.Models
         public DbSet<Flight> Flights { get; set; }
         public DbSet<Terminal> Terminals { get; set; }
         public DbSet<Status> Statuses { get; set; }
+        public DbSet<Passangers> Passangers { get; set; }
+     //   public DbSet<StatisticAirline> StatisticAirlines { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

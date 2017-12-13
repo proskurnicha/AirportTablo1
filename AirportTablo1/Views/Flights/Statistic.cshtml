@@ -1,0 +1,31 @@
+﻿@model IEnumerable<AirportTablo1.Models.StatisticAirline>
+@{
+    ViewBag.Title = "Statistic";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Статистика</h2>
+
+@if (!Model.Any())
+{
+    <p> Пока что полётов нет!</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Назва авіакомпанії</th>
+                <th>Кількість польотів</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var flight in Model)
+            {
+                <tr>
+                    <td>@flight.NameAirline</td>
+                    <td>@flight.CountAirline</td>
+                </tr>
+            }
+        </tbody>
+    </table>

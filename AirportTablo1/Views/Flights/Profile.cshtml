@@ -1,19 +1,10 @@
-﻿@model AirportTablo1.Models.Flight
+﻿@using Microsoft.AspNet.Identity
+@model AirportTablo1.Models.Flight
 @{
     ViewBag.Title = "Profile";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>Profile</h2>
-@section Scripts {
-    window.setInterval(function() {
-    // Send an AJAX request every 5s to poll for changes and update the UI
-    // example with jquery:
-    $.get('/foo', function(result) {
-    // TODO: use the results returned from your controller action
-    // to update the UI
-    });
-    }, 5000);
-}
 
 <div class="alert_list">
     <div class="alert alert-info alert-dismissible" role="alert">
@@ -40,7 +31,11 @@
         });
     }, 5000);
 </script>*@
+<script type="text/javascript">
+    var a = "@User.Identity.GetUserId().ToString()";
+</script>
 @Scripts.Render("~/scripts/jquery-1.10.2.min.js")
 @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
 @Scripts.Render("~/scripts/bootstrap.js")
 @Scripts.Render("~/scripts/profile/profile.js")
+
