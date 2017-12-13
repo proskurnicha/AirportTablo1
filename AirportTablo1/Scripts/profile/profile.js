@@ -1,25 +1,27 @@
-﻿$(document).ready(function () {
+﻿//console.log('userID', userID);
+$(document).ready(function () {
+    console.log('userID', userID);
     $.ajax({
-        type: 'GET',
-        url: "/api/message/id",
-        dataType: "json",
-        success: function (historyList) {
-            createAlerts(historyList);
+        type: 'get',
+        url: `/api/message/${userID}`,
+        datatype: "json",
+        success: function (historylist) {
+            createalerts(historylist);
         },
         error: function (xhr) {
-            console.log("Error",xhr)
-        //var errorMessage = JSON.parse(xhr.responseText).message;
+            console.log("error",xhr)
+        //var errormessage = json.parse(xhr.responsetext).message;
         //    swal({
-        //        title: errorMessage,
+        //        title: errormessage,
         //        type: "error"
         //    });
         }
-            //sessionStorage.setItem('partsData', JSON.stringify(JsonData));
+            //sessionstorage.setitem('partsdata', json.stringify(jsondata));
 
-            //partSelect.append('<option value="" selected disabled>Select a part</option>');
+            //partselect.append('<option value="" selected disabled>select a part</option>');
 
-            //$.each(JsonData, function (index, part) {
-            //    partSelect.append('<option value="' + part + '">' + part + '</option>');
+            //$.each(jsondata, function (index, part) {
+            //    partselect.append('<option value="' + part + '">' + part + '</option>');
             //});
     });
 
