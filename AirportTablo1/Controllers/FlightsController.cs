@@ -132,7 +132,7 @@ namespace AirportTablo1.Controllers
         public ActionResult Save(Flight flight)
         {
             var flightInDb = _context.Flights.Single(m => m.Id == flight.Id);
-            flightInDb.DateTimeDelay = flight.DateTimeDelay;
+            flightInDb.TimeDelay = flight.TimeDelay;
             if (flight.StatusId != 0)
                 flightInDb.StatusId = flight.StatusId;
             if (flight.TerminalId != 0)
