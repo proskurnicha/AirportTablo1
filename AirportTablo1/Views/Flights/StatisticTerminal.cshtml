@@ -1,0 +1,30 @@
+﻿@model IEnumerable<AirportTablo1.Models.StatisticTerminal>
+
+
+<h2>Статистика використання терміналів</h2>
+
+
+@if (!Model.Any())
+{
+    <p> Пока что полётов нет!</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Термінал</th>
+                <th>Кількість рейсів, які його використовують</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var flight in Model)
+            {
+                <tr>
+                    <td>@flight.TerminalInfo</td>
+                    <td>@flight.CountTerminal</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

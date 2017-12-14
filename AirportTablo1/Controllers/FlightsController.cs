@@ -5,6 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Data;
+using System.Data.SqlClient;
+
 namespace AirportTablo1.Controllers
 {
     //    [AllowAnonymous]
@@ -149,13 +152,57 @@ namespace AirportTablo1.Controllers
             return View();
         }
 
+        public ActionResult Statistic()
+        {
+            DataTable table = new DataTable();
+            List<StatisticAirline> statisticAirline = new List<StatisticAirline>();
+            using (var connection = new SqlConnection(@"Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=E:\AirportTablo1\AirportTablo1\App_Data\aspnet-AirportTablo1-20171209073627.mdf;Initial Catalog=aspnet-AirportTablo1-20171209073627;Integrated Security=True"))
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand("SELECT * FROM StatisticNameAirlineCount", connection))
+                {
+                    table.Load(command.ExecuteReader());
+                }
+
+                connection.Close();
+            }
+            foreach (DataRow row in table.Rows)
+            {
+                statisticAirline.Add(new StatisticAirline(Convert.ToInt32(row["CountAirline"]), Convert.ToString(row["NameAirline"])));
+            }
+            //DataTable table2 = new DataTable();
+            //List<StatisticTerminal> statisticTerminal = new List<StatisticTerminal>();
+            //using (var connection = new SqlConnection(@"Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=E:\AirportTablo1\AirportTablo1\App_Data\aspnet-AirportTablo1-20171209073627.mdf;Initial Catalog=aspnet-AirportTablo1-20171209073627;Integrated Security=True"))
+            //{
+            //    connection.Open();
+
+            //    using (var command = new SqlCommand("SELECT * FROM StatisticTerminalCount", connection))
+            //    {
+            //        table2.Load(command.ExecuteReader());
+            //    }
+
+            //    connection.Close();
+            //}
+            //foreach (DataRow row in table2.Rows)
+            //{
+            //    statisticTerminal.Add(new StatisticTerminal(Convert.ToString(row["TerminalInfo"]), Convert.ToInt32(row["CountTerminal"])));
+            //}
+
+            //var statistic = new Statistic(statisticTerminal, statisticAirline);
+            return View(statisticAirline);
+        }
+
         //public ActionResult Statistic()
         //{
-        //    var statistic = _context.StatisticAirlines;
-
-        //    return View(statistic);
+        //    return View();
         //}
 
+        //public ActionResult StatisticTerminal()
+        //{
+        //    StatisticTerminal statisticTerminal = new StatisticTerminal("dfgsadg", 5);
+        //    return PartialView("Details", statisticTerminal);
+        //}
         //public  ActionResult Profile(string )
         //{
         //    return View();

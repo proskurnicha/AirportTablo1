@@ -1,31 +1,43 @@
 ﻿@model IEnumerable<AirportTablo1.Models.StatisticAirline>
 @{
-    ViewBag.Title = "Statistic";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+                /**/
+
+                /**/
+
+                ViewBag.Title = "Statistic";
+                Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Статистика</h2>
 
+
+@*@{Html.RenderPartial("StatisticAirline");}*@
+@*<p>@Html.ActionLink("Мій кабінет", "StatisticTerminal", "Flights")</p>
+@{Html.RenderAction("StatisticTerminal", "Flights");}*@
+@*@{Html.RenderPartial("StatisticTerminal");}*@
+
+
 @if (!Model.Any())
-{
-    <p> Пока что полётов нет!</p>
-}
-else
-{
-    <table class="table table-bordered table-hover">
-        <thead>
-            <tr>
-                <th>Назва авіакомпанії</th>
-                <th>Кількість польотів</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var flight in Model)
-            {
+    {
+        <p> Пока что полётов нет!</p>
+    }
+    else
+    {
+        <table class="table table-bordered table-hover">
+            <thead>
                 <tr>
-                    <td>@flight.NameAirline</td>
-                    <td>@flight.CountAirline</td>
+                    <th>Назва авіакомпанії</th>
+                    <th>Кількість польотів</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var flight in Model)
+                {
+                    <tr>
+                        <td>@flight.NameAirline</td>
+                        <td>@flight.CountAirline</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }

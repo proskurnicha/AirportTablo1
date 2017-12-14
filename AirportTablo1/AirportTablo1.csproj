@@ -314,6 +314,8 @@
     <Content Include="Views\Flights\ListBefore.cshtml" />
     <Content Include="Views\Flights\Details.cshtml" />
     <Content Include="Views\Flights\Statistic.cshtml" />
+    <Content Include="Views\Flights\StatisticTerminal.cshtml" />
+    <Content Include="Views\Flights\StatisticAirline.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

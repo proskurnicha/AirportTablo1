@@ -17,7 +17,7 @@
 {
     <p>Час відправлення: @Model.DateTimeAiplaneMove.ToShortTimeString()</p>
 }
-<p>Час затримки: @Model.DateTimeDelay.ToShortTimeString()</p>
+<p>Час затримки: @Model.TimeDelay.Minutes</p>
 <p>Статус: @Model.Status.StatusInfo</p>
 <p>Номер терміналу: @Model.Terminal.TerminalInfo</p>
 <p>Ім`я авіакомпанії: @Model.NameAirline</p>
