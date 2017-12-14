@@ -156,7 +156,7 @@ namespace AirportTablo1.Controllers
         {
             DataTable table = new DataTable();
             List<StatisticAirline> statisticAirline = new List<StatisticAirline>();
-            using (var connection = new SqlConnection(@"Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=E:\AirportTablo1\AirportTablo1\App_Data\aspnet-AirportTablo1-20171209073627.mdf;Initial Catalog=aspnet-AirportTablo1-20171209073627;Integrated Security=True"))
+            using (var connection = new SqlConnection(@"Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=D:\Projects\corseWork\AirportTablo1\AirportTablo1\App_Data\aspnet-AirportTablo1-20171209073627.mdf;Initial Catalog=aspnet-AirportTablo1-20171209073627;Integrated Security=True"))
             {
                 connection.Open();
 
