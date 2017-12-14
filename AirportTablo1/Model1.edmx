@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'aspnet-AirportTablo1-20171209073627.dbo.StatisticNameAirlineCount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="StatisticNameAirlineCount">
+          <Key>
+            <PropertyRef Name="NameAirline" />
+          </Key>
+          <Property Name="NameAirline" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CountAirline" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'aspnet-AirportTablo1-20171209073627.dbo.StatisticTerminalCount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="StatisticTerminalCount">
+          <Key>
+            <PropertyRef Name="TerminalInfo" />
+          </Key>
+          <Property Name="TerminalInfo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CountTerminal" Type="int" />
+        </EntityType>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="StatisticNameAirlineCount" EntityType="Self.StatisticNameAirlineCount" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [StatisticNameAirlineCount].[NameAirline] AS [NameAirline], 
+    [StatisticNameAirlineCount].[CountAirline] AS [CountAirline]
+    FROM [dbo].[StatisticNameAirlineCount] AS [StatisticNameAirlineCount]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="StatisticTerminalCount" EntityType="Self.StatisticTerminalCount" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [StatisticTerminalCount].[TerminalInfo] AS [TerminalInfo], 
+    [StatisticTerminalCount].[CountTerminal] AS [CountTerminal]
+    FROM [dbo].[StatisticTerminalCount] AS [StatisticTerminalCount]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="StatisticNameAirlineCount">
+          <Key>
+            <PropertyRef Name="NameAirline" />
+          </Key>
+          <Property Name="NameAirline" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountAirline" Type="Int32" />
+        </EntityType>
+        <EntityType Name="StatisticTerminalCount">
+          <Key>
+            <PropertyRef Name="TerminalInfo" />
+          </Key>
+          <Property Name="TerminalInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountTerminal" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="StatisticNameAirlineCounts" EntityType="Self.StatisticNameAirlineCount" />
+          <EntitySet Name="StatisticTerminalCounts" EntityType="Self.StatisticTerminalCount" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="StatisticNameAirlineCounts">
+            <EntityTypeMapping TypeName="Model.StatisticNameAirlineCount">
+              <MappingFragment StoreEntitySet="StatisticNameAirlineCount">
+                <ScalarProperty Name="NameAirline" ColumnName="NameAirline" />
+                <ScalarProperty Name="CountAirline" ColumnName="CountAirline" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatisticTerminalCounts">
+            <EntityTypeMapping TypeName="Model.StatisticTerminalCount">
+              <MappingFragment StoreEntitySet="StatisticTerminalCount">
+                <ScalarProperty Name="TerminalInfo" ColumnName="TerminalInfo" />
+                <ScalarProperty Name="CountTerminal" ColumnName="CountTerminal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
